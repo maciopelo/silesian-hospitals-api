@@ -15,10 +15,12 @@ const id = setInterval(() => {
   });
 }, minutes * 60 * 1000);
 
-app.get("/api/v1/hospitals", (req, res) => {
+app.get("silesia/hospitals/v1/api", (req, res) => {
   res.json(data);
 });
 
 app.listen(port, () =>
-  console.log(`Checkout API at http://localhost:${port}/api/v1/hospitals !`)
+  console.log(
+    `Checkout API at http://localhost:${port}/silesia/hospitals/v1/api !`
+  )
 );
