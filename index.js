@@ -10,9 +10,10 @@ const minutes = 0.5;
 
 const id = setInterval(() => {
   const python = spawn("python", ["scraper.py"]);
-  console.log(" i should have exec script");
   python.on("close", (code) => {
-    console.log(`Child process close all stdio with code ${code}`);
+    console.log(
+      `Python script executed with code ${code} | Update done at ${Date()}`
+    );
     fs.readFile("./data.json", "utf8", (err, data) => {
       if (err) {
         console.error(err);
@@ -27,4 +28,4 @@ app.get("/", (req, res) => {
   res.json(_data);
 });
 
-app.listen(port, () => console.log(`Works!`));
+app.listen(port, () => console.log(`Website works on port ${port}.`));
