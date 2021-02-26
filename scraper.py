@@ -146,9 +146,15 @@ if __name__ == "__main__":
     df = DataFetcher(URL)
     data = df._get_data()
 
-    with open('data.json', 'w',encoding='utf-8') as outfile:
-        json.dump(data, outfile,ensure_ascii=False)
+    try:
+        with open('data.json', 'w',encoding='utf-8') as outfile:
+            json.dump(data, outfile,ensure_ascii=False)
+        print('\nSucces, file properly saved !')
+    except:
+        print('Something went wrong with saving file.')
     
-    print("\nSucces !")
+    
+    
+    
 
 

@@ -9,8 +9,9 @@ const minutes = 0.5;
 
 const id = setInterval(() => {
   const python = spawn("python", ["scraper.py"]);
+  console.log(" i should have exec script");
   python.on("close", (code) => {
-    //console.log(`Child process close all stdio with code ${code}`);
+    console.log(`Child process close all stdio with code ${code}`);
     data = require("./data.json");
   });
 }, minutes * 60 * 1000);
