@@ -4,11 +4,13 @@ const fs = require("fs");
 
 const app = express();
 const port = process.env.PORT || 8080;
+const minutes = 0.5;
 
-let _data;
-const minutes = 5;
+let _data = JSON.parse(
+  fs.readFileSync("./data.json", { encoding: "utf8", flag: "r" })
+);
 
-const id = setInterval(() => {
+setInterval(() => {
   const python = spawn("python", ["scraper.py"]);
   python.on("close", (code) => {
     console.log(

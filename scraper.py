@@ -31,6 +31,8 @@ class DataFetcher():
             'date': str(_date).split(' ')[0],
             'day': _date.strftime("%A"),
             'time':str(_date).split(' ')[1][:8],
+            'UTC': '+0000',
+            'timezone': 'Coordinated Universal Time'
         }
 
         result['data'] = []
