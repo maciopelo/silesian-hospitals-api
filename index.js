@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 let _data;
-const minutes = 0.5;
+const minutes = 5;
 
 const id = setInterval(() => {
   const python = spawn("python", ["scraper.py"]);
