@@ -30,7 +30,7 @@ class DataFetcher():
         result['lastUpdate'] = {
             'date': str(_date).split(' ')[0],
             'day': _date.strftime("%A"),
-            'time':str(_date).split(' ')[1][:8]
+            'time':str(_date).split(' ')[1][:8],
         }
 
         result['data'] = []
@@ -105,14 +105,14 @@ class DataFetcher():
                 except:
                     all_beds = all_beds.parent.find_all('td')[1].text
             else:
-                all_beds = ""
+                all_beds = None
             single_hospital["allPlaces"] = all_beds
 
             telephone = more_specific_data.find('td',string="Telefon na oddział:")
             if telephone is not type(None):
                 telephone = telephone.parent.find_all('td')[1].text 
             else:
-                telephone = ""
+                telephone = None
             single_hospital["telephone"] = telephone
 
 
@@ -121,7 +121,7 @@ class DataFetcher():
                 adress = adress.parent.find_all('td')[1].text 
                
             else:
-                adress = ""
+                adress = None
             single_hospital["adress"] = adress
 
 
@@ -130,7 +130,7 @@ class DataFetcher():
                 map_url = map_url.parent.find_all('td')[1].text
                 
             else: 
-                map_url = ""
+                map_url = None
             single_hospital["map_url"] = map_url
 
             result.append(single_hospital)
@@ -152,9 +152,3 @@ if __name__ == "__main__":
         print('\nSucces, file properly saved !')
     except:
         print('Something went wrong with saving file.')
-    
-    
-    
-    
-
-
