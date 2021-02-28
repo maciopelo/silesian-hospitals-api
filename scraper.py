@@ -61,7 +61,7 @@ class DataFetcher():
 
         if county.find_all('td', recursive=False)[0].find('b') is not None:
             county_name = county.find_all('td', recursive=False)[0].find('b').text
-            result['county_name'] = county_name # set the county name
+            result['countyName'] = county_name # set the county name
 
             hospitals_info = county.find_all('td', recursive=False)[1].find_all('table', class_="table")
             result['hospitals'] = []
@@ -129,11 +129,12 @@ class DataFetcher():
 
             map_url = more_specific_data.find('td',string="Link do mapy:")
             if map_url is not None: 
-                map_url = map_url.parent.find_all('td')[1].text
+                map_url = map_url.parent.find_all('td')[1].find('a')['href']
+
                 
             else: 
                 map_url = None
-            single_hospital["map_url"] = map_url
+            single_hospital["mapUrl"] = map_url
 
             result.append(single_hospital)
         
@@ -150,7 +151,7 @@ if __name__ == "__main__":
 
     try:
         with open('data.json', 'w',encoding='utf-8') as outfile:
-            json.dump(data, outfile,ensure_ascii=False)
+            json.dump(data, outfile, ensure_ascii=False)
         print('\nSucces, file properly saved !')
     except:
         print('Something went wrong with saving file.')
